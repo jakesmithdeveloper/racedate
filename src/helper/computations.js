@@ -58,3 +58,19 @@ const parseDateToString = (date) => {
     months[date.getUTCMonth()]
   } ${date.getUTCDate()} ${date.getFullYear()}`;
 };
+
+export const parseResult = (toCompute, values) => {
+  switch (toCompute) {
+    case "raceDate":
+      return computeRaceDate(values);
+
+    case "startDate":
+      return computeStartDate(values);
+
+    case "block":
+      return computeTrainingBlockLength(values);
+
+    default:
+      break;
+  }
+};

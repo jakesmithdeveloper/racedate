@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
 
+// import Calendar from "./Calendar";
 import Header from "./Header";
 import Inputs from "./Inputs";
 
-import {
-  computeRaceDate,
-  computeStartDate,
-  computeTrainingBlockLength,
-  parseInput,
-} from "../helper/computations";
+import { parseResult, parseInput } from "../helper/computations";
 
 const App = () => {
   const states = [
@@ -30,23 +26,7 @@ const App = () => {
   const handleSubmit = (values) => {
     const toCompute = parseInput(values);
 
-    let tempResult = "";
-
-    switch (toCompute) {
-      case "raceDate":
-        tempResult = computeRaceDate(values);
-        break;
-      case "startDate":
-        tempResult = computeStartDate(values);
-        break;
-      case "block":
-        tempResult = computeTrainingBlockLength(values);
-        break;
-      default:
-        break;
-    }
-
-    setResult(tempResult);
+    setResult(parseResult(toCompute, values));
   };
 
   return (
@@ -61,6 +41,7 @@ const App = () => {
       <h2>
         {currentState.label}: {result ? result : ""}
       </h2>
+      {/* <Calendar /> */}
     </div>
   );
 };
