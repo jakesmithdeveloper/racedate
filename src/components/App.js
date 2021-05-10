@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-// import Calendar from "./Calendar";
+import Calendars from "./Calendars";
 import Header from "./Header";
 import Inputs from "./Inputs";
 
@@ -30,18 +30,20 @@ const App = () => {
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <h1 className="text-6xl">Race Date</h1>
-      <Header state={currentState} handleClick={handleClick} />
-      <Inputs
-        states={states}
-        currentState={currentState}
-        handleSubmit={handleSubmit}
-      />
-      <h2>
-        {currentState.label}: {result ? result : ""}
-      </h2>
-      {/* <Calendar /> */}
+    <div className="w-full flex justify-center">
+      <div className="flex flex-col items-center w-full">
+        <h1 className="text-6xl">Race Date</h1>
+        <Header state={currentState} handleClick={handleClick} />
+        <Inputs
+          states={states}
+          currentState={currentState}
+          handleSubmit={handleSubmit}
+        />
+        <h2>
+          {currentState.label}: {result ? result.string : ""}
+        </h2>
+        {result ? <Calendars startDate={result.startDate} raceDate={result.raceDate} /> : null}
+      </div>
     </div>
   );
 };

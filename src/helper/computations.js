@@ -28,7 +28,16 @@ export const computeRaceDate = ({ startDate, block }) => {
 
   raceDate.setUTCDate(raceDate.getUTCDate() + block * 7);
 
-  return parseDateToString(raceDate);
+  console.log({
+    string: parseDateToString(raceDate),
+    startDate: startDate,
+    raceDate: raceDate,
+  });
+  return {
+    string: parseDateToString(raceDate),
+    startDate: startDate,
+    raceDate: raceDate,
+  };
 };
 
 export const computeStartDate = ({ raceDate, block }) => {

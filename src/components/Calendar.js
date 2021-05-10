@@ -1,46 +1,39 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   format,
-  addMonths,
-  subMonths,
   addDays,
   startOfWeek,
   startOfMonth,
   endOfMonth,
   endOfWeek,
   isSameMonth,
-  isSameDay,
-  parse,
 } from "date-fns";
 
-const Calendar = () => {
-  const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(new Date());
-
+const Calendar = ({
+  raceDate = new Date(),
+  blockStartDate = new Date(),
+  currentMonth = new Date(),
+}) => {
   const renderHeader = () => {
     const dateFormat = "MMMM yyyy";
 
     return (
       <div className="header row flex-middle">
         <div className="col col-start">
-          <div className="icon" onClick={prevMonth}>
-            chevron_left
-          </div>
+          <div className="icon">chevron_left</div>
         </div>
         <div className="col col-center">
           <span>{format(currentMonth, dateFormat)}</span>
         </div>
         <div className="col col-end">
-          <div className="icon" onClick={nextMonth}>
-            chevron_right
-          </div>
+          <div className="icon">chevron_right</div>
         </div>
       </div>
     );
   };
 
   const renderDays = () => {
-    const dateFormat = "dddd";
+    const dateFormat = "EEEE";
     const days = [];
 
     let startDate = startOfWeek(currentMonth);
@@ -72,18 +65,16 @@ const Calendar = () => {
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate = format(day, dateFormat);
-        const cloneDay = day;
         days.push(
           <div
             className={`col cell ${
               !isSameMonth(day, monthStart)
                 ? "disabled"
-                : isSameDay(day, selectedDate)
+                : day > new Date(blockStartDate) && day <= raceDate
                 ? "selected"
                 : ""
             }`}
             key={day}
-            onClick={() => onDateClick(parse(cloneDay))}
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
@@ -102,20 +93,8 @@ const Calendar = () => {
     return <div className="body">{rows}</div>;
   };
 
-  const nextMonth = () => {
-    setCurrentMonth(addMonths(currentMonth, 1));
-  };
-
-  const prevMonth = () => {
-    setCurrentMonth(subMonths(currentMonth, 1));
-  };
-
-  const onDateClick = (day) => {
-    setSelectedDate(day);
-  };
-
   return (
-    <div className="calendar">
+    <div className="calendar max-w-xl">
       {renderHeader()}
       {renderDays()}
       {renderCells()}
