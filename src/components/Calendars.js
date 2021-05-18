@@ -1,31 +1,31 @@
 import React from "react";
+import { differenceInCalendarMonths, addMonths } from "date-fns";
 
 import Calendar from "./Calendar";
 
-const Calendars = ({ startDate = new Date(), raceDate = new Date() }) => {
+const Calendars = ({ dates = {} }) => {
+  const renderCalendars = () => {
+    let cals = [];
+
+    for (
+      let i = 0;
+      i < differenceInCalendarMonths(dates.raceDate, dates.startDate) + 1;
+      i++
+    ) {
+      cals.push(
+        <Calendar
+          blockStartDate={dates.startDate}
+          blockEndDate={dates.raceDate}
+          currentMonth={addMonths(dates.startDate, i)}
+        />
+      );
+    }
+
+    return cals;
+  };
+
   return (
-    <div className="w-full flex flex-col items-center">
-      <Calendar
-        blockStartDate={startDate}
-        raceDate={raceDate}
-        currentMonth={new Date(startDate)}
-      />
-      <Calendar
-        blockStartDate={startDate}
-        raceDate={raceDate}
-        currentMonth={new Date(2021, 5, 1)}
-      />
-      <Calendar
-        blockStartDate={startDate}
-        raceDate={raceDate}
-        currentMonth={new Date(2021, 6, 1)}
-      />
-      <Calendar
-        blockStartDate={startDate}
-        raceDate={raceDate}
-        currentMonth={new Date(2021, 7, 1)}
-      />
-    </div>
+    <div className="w-full flex flex-col items-center">{renderCalendars()}</div>
   );
 };
 

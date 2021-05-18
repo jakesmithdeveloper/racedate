@@ -10,7 +10,7 @@ import {
 } from "date-fns";
 
 const Calendar = ({
-  raceDate = new Date(),
+  blockEndDate = new Date(),
   blockStartDate = new Date(),
   currentMonth = new Date(),
 }) => {
@@ -19,14 +19,8 @@ const Calendar = ({
 
     return (
       <div className="header row flex-middle">
-        <div className="col col-start">
-          <div className="icon">chevron_left</div>
-        </div>
         <div className="col col-center">
           <span>{format(currentMonth, dateFormat)}</span>
-        </div>
-        <div className="col col-end">
-          <div className="icon">chevron_right</div>
         </div>
       </div>
     );
@@ -70,7 +64,7 @@ const Calendar = ({
             className={`col cell ${
               !isSameMonth(day, monthStart)
                 ? "disabled"
-                : day > new Date(blockStartDate) && day <= raceDate
+                : day > blockStartDate && day <= blockEndDate
                 ? "selected"
                 : ""
             }`}

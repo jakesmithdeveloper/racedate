@@ -30,12 +30,12 @@ export const computeRaceDate = ({ startDate, block }) => {
 
   console.log({
     string: parseDateToString(raceDate),
-    startDate: startDate,
+    startDate: new Date(startDate),
     raceDate: raceDate,
   });
   return {
     string: parseDateToString(raceDate),
-    startDate: startDate,
+    startDate: new Date(startDate),
     raceDate: raceDate,
   };
 };
@@ -43,7 +43,11 @@ export const computeRaceDate = ({ startDate, block }) => {
 export const computeStartDate = ({ raceDate, block }) => {
   const startDate = new Date(Date.parse(raceDate));
   startDate.setUTCDate(startDate.getUTCDate() - block * 7);
-  return parseDateToString(startDate);
+  return {
+    string: parseDateToString(startDate),
+    startDate: startDate,
+    raceDate: new Date(raceDate),
+  };
 };
 
 export const computeTrainingBlockLength = ({ startDate, raceDate }) => {
@@ -52,7 +56,11 @@ export const computeTrainingBlockLength = ({ startDate, raceDate }) => {
 
   const timeDifference = end.getTime() - start.getTime();
   const weekDifference = Math.ceil(timeDifference / (1000 * 3600 * 24 * 7));
-  return `${weekDifference} ${weekDifference > 1 ? "weeks" : "week"}`;
+  return {
+    string: `${weekDifference} ${weekDifference > 1 ? "weeks" : "week"}`,
+    startDate: new Date(startDate),
+    raceDate: new Date(raceDate),
+  };
 };
 
 export const parseInput = (values) => {

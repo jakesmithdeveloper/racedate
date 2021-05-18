@@ -42,7 +42,7 @@ const App = () => {
         <h2>
           {currentState.label}: {result ? result.string : ""}
         </h2>
-        {result ? <Calendars startDate={result.startDate} raceDate={result.raceDate} /> : null}
+        {result ? <Calendars dates={result} /> : null}
       </div>
     </div>
   );
