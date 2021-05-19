@@ -1,5 +1,5 @@
 import React from "react";
-import { differenceInCalendarMonths, addMonths } from "date-fns";
+import { differenceInCalendarMonths, addMonths, addMinutes } from "date-fns";
 
 import Calendar from "./Calendar";
 
@@ -14,8 +14,15 @@ const Calendars = ({ dates = {} }) => {
     ) {
       cals.push(
         <Calendar
-          blockStartDate={dates.startDate}
-          blockEndDate={dates.raceDate}
+          key={i}
+          blockStartDate={addMinutes(
+            dates.startDate,
+            dates.startDate.getTimezoneOffset()
+          )}
+          blockEndDate={addMinutes(
+            dates.raceDate,
+            dates.raceDate.getTimezoneOffset()
+          )}
           currentMonth={addMonths(dates.startDate, i)}
         />
       );

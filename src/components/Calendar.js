@@ -64,7 +64,7 @@ const Calendar = ({
             className={`col cell ${
               !isSameMonth(day, monthStart)
                 ? "disabled"
-                : day > blockStartDate && day <= blockEndDate
+                : day >= blockStartDate && day <= blockEndDate
                 ? "selected"
                 : ""
             }`}
@@ -88,7 +88,7 @@ const Calendar = ({
   };
 
   return (
-    <div className="calendar max-w-xl">
+    <div className="calendar max-w-sm md:max-w-xl">
       {renderHeader()}
       {renderDays()}
       {renderCells()}
