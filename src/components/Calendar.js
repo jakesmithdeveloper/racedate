@@ -18,8 +18,8 @@ const Calendar = ({
     const dateFormat = "MMMM yyyy";
 
     return (
-      <div className="header row flex-middle">
-        <div className="col col-center">
+      <div className="w-full py-7 border-b border-solid border-gray-700 m-0 p-0 flex flex-row flex-wrap">
+        <div className="flex-grow max-w-full content-center text-center">
           <span>{format(currentMonth, dateFormat)}</span>
         </div>
       </div>
@@ -34,13 +34,20 @@ const Calendar = ({
 
     for (let i = 0; i < 7; i++) {
       days.push(
-        <div className="col col-center" key={i}>
+        <div
+          className="flex-grow max-w-full content-center text-center"
+          key={i}
+        >
           {format(addDays(startDate, i), dateFormat)}
         </div>
       );
     }
 
-    return <div className="days row">{days}</div>;
+    return (
+      <div className="uppercase font-normal text-gray-800 text-xs py-3 border-b border-gray-800 m-0 p-0 flex flex-row flex-wrap w-full">
+        {days}
+      </div>
+    );
   };
 
   const renderCells = () => {
@@ -61,23 +68,27 @@ const Calendar = ({
         formattedDate = format(day, dateFormat);
         days.push(
           <div
-            className={`col cell ${
+            className={` flex-grow-0 w-sevens relative h-cellHeightSM md:h-cellHeightMD border-r border-solid border-gray-100 overflow-hidden cursor-pointer ${
               !isSameMonth(day, monthStart)
-                ? "disabled"
+                ? "pointer-events-none text-gray-400"
                 : day >= blockStartDate && day <= blockEndDate
-                ? "selected"
+                ? "bg-green-700 text-gray-100"
                 : ""
             }`}
             key={day}
           >
-            <span className="number">{formattedDate}</span>
-            <span className="bg">{formattedDate}</span>
+            <span className="absolute text-sm top-3 right-3 font-bold">
+              {formattedDate}
+            </span>
           </div>
         );
         day = addDays(day, 1);
       }
       rows.push(
-        <div className="row" key={day}>
+        <div
+          className=" m-0 p-0 flex flex-row flex-wrap w-full border-b border-solid border-gray-100"
+          key={day}
+        >
           {days}
         </div>
       );
@@ -88,7 +99,7 @@ const Calendar = ({
   };
 
   return (
-    <div className="calendar max-w-sm md:max-w-xl">
+    <div className="calendar block relative pb-4 px-4 mb-4 w-full max-w-sm md:max-w-xl">
       {renderHeader()}
       {renderDays()}
       {renderCells()}
