@@ -7,6 +7,7 @@ import {
   endOfMonth,
   endOfWeek,
   isSameMonth,
+  isEqual,
 } from "date-fns";
 
 const Calendar = ({
@@ -18,8 +19,8 @@ const Calendar = ({
     const dateFormat = "MMMM yyyy";
 
     return (
-      <div className="w-full py-7 border-b border-solid border-gray-700 m-0 p-0 flex flex-row flex-wrap">
-        <div className="flex-grow max-w-full content-center text-center">
+      <div className="w-full py-4 border-b border-solid border-gray-700 m-0 p-0 flex flex-row flex-wrap">
+        <div className="flex-grow max-w-full content-center text-center font-bold">
           <span>{format(currentMonth, dateFormat)}</span>
         </div>
       </div>
@@ -27,7 +28,7 @@ const Calendar = ({
   };
 
   const renderDays = () => {
-    const dateFormat = "EEEE";
+    const dateFormat = "EEEEEE";
     const days = [];
 
     let startDate = startOfWeek(currentMonth);
@@ -72,7 +73,9 @@ const Calendar = ({
               !isSameMonth(day, monthStart)
                 ? "pointer-events-none text-gray-400"
                 : day >= blockStartDate && day <= blockEndDate
-                ? "bg-green-700 text-gray-100"
+                ? isEqual(day, blockEndDate)
+                  ? "bg-yellow-400 text-gray-100"
+                  : "bg-green-700 text-gray-100"
                 : ""
             }`}
             key={day}
@@ -99,7 +102,7 @@ const Calendar = ({
   };
 
   return (
-    <div className="calendar block relative pb-4 px-4 mb-4 w-full max-w-sm md:max-w-xl">
+    <div className="calendar block relative pb-4 px-4 my-4 w-full max-w-sm md:max-w-xl">
       {renderHeader()}
       {renderDays()}
       {renderCells()}

@@ -30,20 +30,20 @@ const App = () => {
   };
 
   return (
-    <div className="w-full flex justify-center">
-      <div className="flex flex-col items-center w-full">
-        <h1 className="text-6xl">Race Date</h1>
+    <div className="w-full flex items-center flex-col">
+      <div className="flex flex-col items-center bg-gray-800 px-20 pb-10 pt-10 rounded-3xl max-w-sm md:max-w-xl mt-10">
+        <h1 className="text-3xl md:text-6xl mb-5 text-gray-200">Race Date</h1>
         <Header state={currentState} handleClick={handleClick} />
         <Inputs
           states={states}
           currentState={currentState}
           handleSubmit={handleSubmit}
         />
-        <h2>
-          {currentState.label}: {result ? result.string : ""}
-        </h2>
-        {result ? <Calendars dates={result} /> : null}
       </div>
+      <h2 className="text-gray-700 mt-5 text-xl font-bold">
+        {result ? `${currentState.label} :` : ""} {result ? result.string : ""}
+      </h2>
+      {result ? <Calendars dates={result} /> : null}
     </div>
   );
 };

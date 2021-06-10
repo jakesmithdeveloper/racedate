@@ -21,18 +21,20 @@ const Inputs = ({ states, currentState, handleSubmit }) => {
       }}
       className="flex flex-col items-center"
     >
-      {states.map((state) => {
-        return state.label === currentState.label ? (
-          ""
-        ) : (
-          <DateInput
-            key={state.label}
-            inputConfig={state}
-            handleChange={handleChange}
-          />
-        );
-      })}
-      <button className="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
+      <div className="flex flex-col items-start">
+        {states.map((state) => {
+          return state.label === currentState.label ? (
+            ""
+          ) : (
+            <DateInput
+              key={state.label}
+              inputConfig={state}
+              handleChange={handleChange}
+            />
+          );
+        })}
+      </div>
+      <button className="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center mt-5">
         Compute
       </button>
     </form>

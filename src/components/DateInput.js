@@ -7,10 +7,16 @@ const DateInput = ({ inputConfig, handleChange }) => {
     setValue("");
   }, [inputConfig]);
 
+  const width = inputConfig.type === "text" ? "w-10" : "";
+
   return (
     <div>
-      <label htmlFor="">{`${inputConfig.label} : `}</label>
+      <label
+        className="text-gray-200"
+        htmlFor=""
+      >{`${inputConfig.label} : `}</label>
       <input
+        className={`my-4 ${width}`}
         type={inputConfig.type}
         value={value}
         onChange={(e) => {
