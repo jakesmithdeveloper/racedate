@@ -45,7 +45,7 @@ const Calendar = ({
     }
 
     return (
-      <div className="uppercase font-normal text-gray-800 text-xs py-3 border-b border-gray-800 m-0 p-0 flex flex-row flex-wrap w-full">
+      <div className="uppercase font-normal text-gray-800 text-xs py-3 border-b border-gray-800 m-0 p-0 flex flex-row flex-wrap w-full mb-4">
         {days}
       </div>
     );
@@ -69,7 +69,7 @@ const Calendar = ({
         formattedDate = format(day, dateFormat);
         days.push(
           <div
-            className={` flex-grow-0 w-sevens relative h-cellHeightSM md:h-cellHeightMD border-r border-solid border-gray-100 overflow-hidden cursor-pointer ${
+            className={` flex-grow-0 w-sevens relative h-cellHeightSM md:h-cellHeightMD border-r border-solid border-gray-100 overflow-hidden cursor-pointer rounded-sm ${
               !isSameMonth(day, monthStart)
                 ? "pointer-events-none text-gray-400"
                 : day >= blockStartDate && day <= blockEndDate
@@ -102,7 +102,7 @@ const Calendar = ({
   };
 
   return (
-    <div className="calendar block relative pb-4 px-4 my-4 w-full max-w-sm md:max-w-xl">
+    <div className="calendar block relative pb-4 px-4 my-4 w-full max-w-sm md:max-w-xl rounded-xl">
       {renderHeader()}
       {renderDays()}
       {renderCells()}

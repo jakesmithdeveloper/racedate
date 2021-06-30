@@ -40,9 +40,18 @@ const App = () => {
           handleSubmit={handleSubmit}
         />
       </div>
-      <h2 className="text-gray-700 mt-5 text-xl font-bold">
-        {result ? `${currentState.label} :` : ""} {result ? result.string : ""}
-      </h2>
+
+      {result ? (
+        <div className="flex flex-col items-center">
+          <h2 className="text-gray-700 mt-5 text-xl font-bold">
+            {currentState.label} : {result.string}
+          </h2>
+          <button>create training block</button>
+        </div>
+      ) : (
+        ""
+      )}
+
       {result ? <Calendars dates={result} /> : null}
     </div>
   );
