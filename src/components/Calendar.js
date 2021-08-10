@@ -8,6 +8,8 @@ import {
   endOfWeek,
   isSameMonth,
   isEqual,
+  compareAsc,
+  startOfDay,
 } from "date-fns";
 
 const Calendar = ({
@@ -72,8 +74,9 @@ const Calendar = ({
             className={` flex-grow-0 w-sevens relative h-cellHeightSM md:h-cellHeightMD border-r border-solid border-gray-100 overflow-hidden cursor-pointer rounded-sm ${
               !isSameMonth(day, monthStart)
                 ? "pointer-events-none text-gray-400"
-                : day >= blockStartDate && day <= blockEndDate
-                ? isEqual(day, blockEndDate)
+                : compareAsc(startOfDay(day), startOfDay(blockStartDate)) >=
+                    0 && compareAsc(day, blockEndDate) <= 0
+                ? isEqual(startOfDay(day), startOfDay(blockEndDate))
                   ? "bg-yellow-400 text-gray-100"
                   : "bg-green-700 text-gray-100"
                 : ""
