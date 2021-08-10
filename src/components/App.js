@@ -6,6 +6,12 @@ import Inputs from "./Inputs";
 
 import { parseResult, parseInput } from "../helper/computations";
 
+const testData = {
+  string: "test",
+  startDate: new Date(),
+  raceDate: new Date(2021, 10, 21),
+};
+
 const App = () => {
   const states = [
     { label: "Race Date", type: "date", key: "raceDate" },
@@ -13,10 +19,10 @@ const App = () => {
     { label: "Training Block Length", type: "text", key: "block" },
   ];
   const [currentState, setCurrentState] = useState(states[0]);
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState(testData);
 
   useEffect(() => {
-    setResult(null);
+    setResult(testData);
   }, [currentState]);
 
   const handleClick = (e) => {
@@ -24,9 +30,11 @@ const App = () => {
   };
 
   const handleSubmit = (values) => {
-    const toCompute = parseInput(values);
+    // const toCompute = parseInput(values);
 
-    setResult(parseResult(toCompute, values));
+    const testResult = parseResult("block", testData);
+    // setResult(parseResult(toCompute, values));
+    setResult(testResult);
   };
 
   return (
