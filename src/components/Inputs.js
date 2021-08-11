@@ -10,6 +10,7 @@ const Inputs = ({ states, currentState, handleSubmit }) => {
   }, [currentState]);
 
   const handleChange = (valueObject) => {
+    console.log(valueObject);
     setInputValues({ ...inputValues, [valueObject.key]: valueObject.value });
   };
 
@@ -34,9 +35,11 @@ const Inputs = ({ states, currentState, handleSubmit }) => {
           );
         })}
       </div>
-      <button className="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center mt-5">
-        Compute
-      </button>
+      <div>
+        <button className="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center mt-5 mx-2">
+          Compute
+        </button>
+      </div>
     </form>
   );
 };
