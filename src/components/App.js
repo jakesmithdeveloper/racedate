@@ -19,22 +19,17 @@ const App = () => {
     { label: "Training Block Length", type: "text", key: "block" },
   ];
   const [currentState, setCurrentState] = useState(states[0]);
-  const [result, setResult] = useState(testData);
+  const [result, setResult] = useState(null);
 
-  useEffect(() => {
-    setResult(testData);
-  }, [currentState]);
+  useEffect(() => {}, [currentState]);
 
   const handleClick = (e) => {
     setCurrentState(states[e.target.value]);
   };
 
   const handleSubmit = (values) => {
-    // const toCompute = parseInput(values);
-
-    const testResult = parseResult("block", testData);
-    // setResult(parseResult(toCompute, values));
-    setResult(testResult);
+    const toCompute = parseInput(values);
+    setResult(parseResult(toCompute, values));
   };
 
   return (
@@ -54,12 +49,13 @@ const App = () => {
           <h2 className="text-gray-700 mt-5 text-xl font-bold">
             {currentState.label} : {result.string}
           </h2>
-          <button>create training block</button>
+          <button className="bg-gray-800 text-gray-100 p-2 rounded-lg">
+            Create training block
+          </button>
         </div>
       ) : (
         ""
       )}
-
       {result ? <Calendars dates={result} /> : null}
     </div>
   );
