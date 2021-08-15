@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-const DateInput = ({ inputConfig, handleChange }) => {
+const DateInput = ({ inputConfig, handleChange, currentState }) => {
   const [value, setValue] = useState("");
 
   useEffect(() => {
-    
-  }, [inputConfig]);
+    setValue("");
+  }, [currentState]);
 
   const width = inputConfig.type === "text" ? "w-10" : "";
 

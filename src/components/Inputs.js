@@ -30,6 +30,7 @@ const Inputs = ({ states, currentState, handleSubmit }) => {
               key={state.label}
               inputConfig={state}
               handleChange={handleChange}
+              currentState={currentState}
             />
           );
         })}
