@@ -10,7 +10,6 @@ const Inputs = ({ states, currentState, handleSubmit }) => {
   }, [currentState]);
 
   const handleChange = (valueObject) => {
-    console.log(valueObject);
     setInputValues({ ...inputValues, [valueObject.key]: valueObject.value });
   };
 
