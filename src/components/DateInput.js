@@ -4,7 +4,7 @@ const DateInput = ({ inputConfig, handleChange }) => {
   const [value, setValue] = useState("");
 
   useEffect(() => {
-    setValue("");
+    
   }, [inputConfig]);
 
   const width = inputConfig.type === "text" ? "w-10" : "";

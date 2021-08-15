@@ -14,14 +14,14 @@ const Header = ({ state, handleClick }) => {
             value={0}
             className="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-nowrap select-none"
           >
-            Race Date
+            Start Date
           </li>
           <li
             onClick={handleClick}
             value={1}
             className="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-nowrap select-none"
           >
-            Start Date
+            Race Date
           </li>
           <li
             onClick={handleClick}
