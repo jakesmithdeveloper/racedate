@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import Calendars from "./Calendars";
 import Header from "./Header";
@@ -48,14 +49,20 @@ const ComputationPage = ({ mode, setMode, setResult, result }) => {
           <h2 className="text-gray-700 mt-5 text-xl font-bold">
             {mode.label} : {result.string}
           </h2>
-          <button className="bg-gray-800 text-gray-100 p-2 rounded-lg">
-            Create training block
-          </button>
+          <Link to="/create">
+            <button className="bg-gray-800 text-gray-100 p-2 rounded-lg">
+              Create training block
+            </button>
+          </Link>
         </div>
       ) : (
         ""
       )}
-      {!isEmpty(result) ? <Calendars dates={result} /> : null}
+      {!isEmpty(result) ? (
+        <div className="w-full max-w-sm md:max-w-3xl">
+          <Calendars dates={result} />
+        </div>
+      ) : null}
     </div>
   );
 };

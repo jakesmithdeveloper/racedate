@@ -8,3 +8,9 @@
 .calendar {
   border: 0.1rem solid black;
 }
+
+.square {
+  width: calc(100% / 7);
+  padding-bottom: Calc(100% / 7);
+  position: relative;
+}
