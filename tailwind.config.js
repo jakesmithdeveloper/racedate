@@ -7,8 +7,9 @@ module.exports = {
         sevens: "calc(100% / 7)",
       }),
       height: (theme) => ({
-        cellHeightSM: "3em",
-        cellHeightMD: "5em",
+        cellHeightSM: "6em",
+        cellHeightMD: "8em",
+        sevens: "calc(100% / 7)",
       }),
       border: (theme) => ({
         calendarBorder: "0.25rem solid black",

@@ -7,14 +7,9 @@ const Calendars = ({ dates = {} }) => {
   const renderCalendars = () => {
     let cals = [];
 
-    const blockStartDate = addMinutes(
-      dates.startDate,
-      dates.startDate.getTimezoneOffset()
-    );
-    const blockEndDate = addMinutes(
-      dates.raceDate,
-      dates.raceDate.getTimezoneOffset()
-    );
+    const blockStartDate = dates.startDate;
+
+    const blockEndDate = dates.raceDate;
 
     for (
       let i = 0;

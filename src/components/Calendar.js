@@ -12,11 +12,7 @@ import {
   startOfDay,
 } from "date-fns";
 
-const Calendar = ({
-  blockEndDate = new Date(),
-  blockStartDate = new Date(),
-  currentMonth = new Date(),
-}) => {
+const Calendar = ({ blockEndDate, blockStartDate, currentMonth }) => {
   const renderHeader = () => {
     const dateFormat = "MMMM yyyy";
 
@@ -63,19 +59,19 @@ const Calendar = ({
     const rows = [];
 
     let days = [];
-    let day = startDate;
+    let day = startOfDay(startDate);
     let formattedDate = "";
 
-    while (day <= endDate) {
+    while (day.getTime() <= endDate.getTime()) {
       for (let i = 0; i < 7; i++) {
         formattedDate = format(day, dateFormat);
         days.push(
           <div
-            className={` flex-grow-0 w-sevens relative h-cellHeightSM md:h-cellHeightMD border-r border-solid border-gray-100 overflow-hidden cursor-pointer rounded-sm ${
+            className={` flex-grow-0 square border-r border-solid border-gray-100 overflow-hidden cursor-pointer rounded-sm ${
               !isSameMonth(day, monthStart)
                 ? "pointer-events-none text-gray-400"
-                : compareAsc(startOfDay(day), startOfDay(blockStartDate)) >=
-                    0 && compareAsc(day, blockEndDate) <= 0
+                : compareAsc(day, startOfDay(blockStartDate)) >= 0 &&
+                  compareAsc(day, startOfDay(blockEndDate)) <= 0
                 ? isEqual(startOfDay(day), startOfDay(blockEndDate))
                   ? "bg-yellow-400 text-gray-100"
                   : "bg-green-700 text-gray-100"
@@ -105,7 +101,7 @@ const Calendar = ({
   };
 
   return (
-    <div className="calendar block relative pb-4 px-4 my-4 w-full max-w-sm md:max-w-xl rounded-xl">
+    <div className="calendar block relative pb-4 px-4 my-4 w-full rounded-xl">
       {renderHeader()}
       {renderDays()}
       {renderCells()}
