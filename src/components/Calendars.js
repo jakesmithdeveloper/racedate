@@ -1,5 +1,5 @@
 import React from "react";
-import { differenceInCalendarMonths, addMonths, addMinutes } from "date-fns";
+import { differenceInCalendarMonths, addMonths } from "date-fns";
 
 import Calendar from "./Calendar";
 
@@ -22,6 +22,7 @@ const Calendars = ({ dates = {} }) => {
           blockStartDate={blockStartDate}
           blockEndDate={blockEndDate}
           currentMonth={addMonths(dates.startDate, i)}
+          timeTravel={false}
         />
       );
     }

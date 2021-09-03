@@ -1,3 +1,5 @@
+import { addMinutes } from "date-fns";
+
 const days = {
   0: "Sun",
   1: "Monday",
@@ -30,18 +32,25 @@ export const computeRaceDate = ({ startDate, block }) => {
 
   return {
     string: parseDateToString(raceDate),
-    startDate: new Date(startDate),
-    raceDate: raceDate,
+    startDate: addMinutes(
+      new Date(startDate),
+      new Date(startDate).getTimezoneOffset()
+    ),
+    raceDate: addMinutes(raceDate, raceDate.getTimezoneOffset()),
   };
 };
 
 export const computeStartDate = ({ raceDate, block }) => {
   const startDate = new Date(Date.parse(raceDate));
   startDate.setUTCDate(startDate.getUTCDate() - block * 7);
+
   return {
     string: parseDateToString(startDate),
-    startDate: startDate,
-    raceDate: new Date(raceDate),
+    startDate: addMinutes(startDate, startDate.getTimezoneOffset()),
+    raceDate: addMinutes(
+      new Date(raceDate),
+      new Date(raceDate).getTimezoneOffset()
+    ),
   };
 };
 
@@ -53,8 +62,14 @@ export const computeTrainingBlockLength = ({ startDate, raceDate }) => {
   const weekDifference = Math.ceil(timeDifference / (1000 * 3600 * 24 * 7));
   return {
     string: `${weekDifference} ${weekDifference > 1 ? "weeks" : "week"}`,
-    startDate: new Date(startDate),
-    raceDate: new Date(raceDate),
+    startDate: addMinutes(
+      new Date(startDate),
+      new Date(startDate).getTimezoneOffset()
+    ),
+    raceDate: addMinutes(
+      new Date(raceDate),
+      new Date(raceDate).getTimezoneOffset()
+    ),
   };
 };
 
