@@ -1,16 +1,21 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 import Calendars from "./Calendars";
 import Header from "./Header";
 import Inputs from "./Inputs";
 
 import { parseResult, parseInput } from "../helper/computations";
-import { setMode, setResult } from "../actions";
+import { setMode, setResult, clearResults } from "../actions";
 import { isEmpty } from "../helper/objectFunctions";
 
-const ComputationPage = ({ mode, setMode, setResult, result }) => {
+const ComputationPage = ({
+  mode,
+  setMode,
+  setResult,
+  result,
+  clearResults,
+}) => {
   const states = [
     { label: "Start Date", type: "date", key: "startDate" },
     { label: "Race Date", type: "date", key: "raceDate" },
@@ -23,6 +28,7 @@ const ComputationPage = ({ mode, setMode, setResult, result }) => {
 
   const handleClick = (e) => {
     setMode(states[e.target.value]);
+    clearResults();
   };
 
   const handleSubmit = (values) => {
@@ -49,11 +55,6 @@ const ComputationPage = ({ mode, setMode, setResult, result }) => {
           <h2 className="text-gray-700 mt-5 text-xl font-bold">
             {mode.label} : {result.string}
           </h2>
-          <Link to="/create">
-            <button className="bg-gray-800 text-gray-100 p-2 rounded-lg">
-              Create training block
-            </button>
-          </Link>
         </div>
       ) : (
         ""
@@ -74,6 +75,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { setMode, setResult })(
+export default connect(mapStateToProps, { setMode, setResult, clearResults })(
   ComputationPage
 );

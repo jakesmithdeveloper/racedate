@@ -1,4 +1,4 @@
-import { SET_MODE, SET_RESULT, CLEAR_INPUTS } from "./types";
+import { SET_MODE, SET_RESULT, CLEAR_RESULTS } from "./types";
 
 export const setMode = (mode) => {
   return {
@@ -14,8 +14,8 @@ export const setResult = (result) => {
   };
 };
 
-export const clearInputs = () => {
+export const clearResults = () => {
   return {
-    type: CLEAR_INPUTS,
+    type: CLEAR_RESULTS,
   };
 };
