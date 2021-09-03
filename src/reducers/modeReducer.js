@@ -1,9 +1,11 @@
 import { SET_MODE } from "../actions/types";
 
 const initialState = {
-  label: "Training Block Length",
-  type: "text",
-  key: "block",
+  mode: {
+    label: "Training Block Length",
+    type: "text",
+    key: "block",
+  },
 };
 
 const modeReducer = (state = initialState, action) => {

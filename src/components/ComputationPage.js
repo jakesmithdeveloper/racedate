@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 
 import Calendars from "./Calendars";
@@ -21,10 +21,6 @@ const ComputationPage = ({
     { label: "Race Date", type: "date", key: "raceDate" },
     { label: "Training Block Length", type: "text", key: "block" },
   ];
-
-  useEffect(() => {
-    setMode(states[2]);
-  }, []);
 
   const handleClick = (e) => {
     setMode(states[e.target.value]);
