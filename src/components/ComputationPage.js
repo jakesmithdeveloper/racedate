@@ -1,7 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import About from "./About";
+import CalculatorTitle from "./CalculatorTitle";
 import Calendars from "./Calendars";
+import ComputingSelector from "./ComputingSelector";
 import Header from "./Header";
 import Inputs from "./Inputs";
 
@@ -35,16 +38,30 @@ const ComputationPage = ({
   return !mode ? (
     ""
   ) : (
-    <div className="w-full flex items-center flex-col">
-      <div className="flex flex-col items-center bg-gray-800 px-20 pb-10 pt-10 rounded-3xl max-w-sm md:max-w-xl mt-10">
-        <h1 className="text-3xl md:text-6xl mb-5 text-gray-200">Race Date</h1>
-        <Header state={mode} handleClick={handleClick} />
-        <Inputs
-          states={states}
-          currentState={mode}
-          handleSubmit={handleSubmit}
-        />
-      </div>
+    <div className="w-full flex items-center flex-col bg-background-green h-screen min-h-screen">
+      <Header />
+      {!result ? <About /> : ""}
+
+      {!result ? (
+        <div className="flex flex-col items-center bg-foreground-blue px-20 pb-10 pt-10 rounded-3xl max-w-sm md:max-w-xl mt-10">
+          <div>
+            <CalculatorTitle title="Calculator" />
+            <ComputingSelector state={mode} handleClick={handleClick} />
+            <Inputs
+              states={states}
+              currentState={mode}
+              handleSubmit={handleSubmit}
+            />
+          </div>
+        </div>
+      ) : (
+        <button
+          onClick={clearResults}
+          className="mt-5 p-5 bg-accent-green rounded-lg text-white-cream"
+        >
+          New Calculation
+        </button>
+      )}
 
       {!isEmpty(result) ? (
         <div className="flex flex-col items-center">

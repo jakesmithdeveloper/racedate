@@ -16,7 +16,7 @@ export const Days = ({ currentMonth }) => {
   }
 
   return (
-    <div className="uppercase font-normal text-gray-800 text-xs py-3 border-b border-gray-800 m-0 p-0 flex flex-row flex-wrap w-full mb-4">
+    <div className="uppercase font-normal text-gray-800 text-xs py-3 border-b border-gray-900 m-0 p-0 flex flex-row flex-wrap w-full mb-4">
       {days}
     </div>
   );
