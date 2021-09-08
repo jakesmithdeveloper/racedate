@@ -42,7 +42,7 @@ const Calendar = ({ blockEndDate, blockStartDate, currentMonth }) => {
       }
       rows.push(
         <div
-          className=" m-0 p-0 flex flex-row flex-wrap w-full border-b border-solid border-gray-100"
+          className=" m-0 p-0 flex flex-row flex-wrap w-full border-b border-solid border-gray-900"
           key={day}
         >
           {days}
@@ -55,7 +55,7 @@ const Calendar = ({ blockEndDate, blockStartDate, currentMonth }) => {
   };
 
   return (
-    <div className="calendar block relative pb-4 px-4 my-4 w-full rounded-xl">
+    <div className="calendar block relative pb-4 px-4 my-4 w-full rounded-xl bg-white-cream">
       <CalendarHeader currentMonth={currentMonth} />
       <Days currentMonth={currentMonth} />
       {renderCells()}
