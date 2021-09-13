@@ -18,3 +18,10 @@
 .halfway {
   padding-top: 40%;
 }
+
+html,
+body,
+#app,
+#app > div {
+  height: 100%;
+}

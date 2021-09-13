@@ -1,9 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-
-import About from "./About";
-
-import CalculatorContainer from "./CalculatorContainer";
 import Calendars from "./Calendars";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -39,7 +35,7 @@ const ComputationPage = ({
   return !mode ? (
     ""
   ) : (
-    <div className="w-full flex items-center flex-col">
+    <div className="w-full flex items-center flex-col bg-background-green">
       <Header />
 
       {!result ? (
