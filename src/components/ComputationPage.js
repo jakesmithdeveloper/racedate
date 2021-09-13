@@ -2,11 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 
 import About from "./About";
-import CalculatorTitle from "./CalculatorTitle";
+
+import CalculatorContainer from "./CalculatorContainer";
 import Calendars from "./Calendars";
-import ComputingSelector from "./ComputingSelector";
+import Footer from "./Footer";
 import Header from "./Header";
-import Inputs from "./Inputs";
+import Picker from "./Picker";
 
 import { parseResult, parseInput } from "../helper/computations";
 import { setMode, setResult, clearResults } from "../actions";
@@ -38,22 +39,16 @@ const ComputationPage = ({
   return !mode ? (
     ""
   ) : (
-    <div className="w-full flex items-center flex-col bg-background-green h-screen min-h-screen">
+    <div className="w-full flex items-center flex-col">
       <Header />
-      {!result ? <About /> : ""}
 
       {!result ? (
-        <div className="flex flex-col items-center bg-foreground-blue px-20 pb-10 pt-10 rounded-3xl max-w-sm md:max-w-xl mt-10">
-          <div>
-            <CalculatorTitle title="Calculator" />
-            <ComputingSelector state={mode} handleClick={handleClick} />
-            <Inputs
-              states={states}
-              currentState={mode}
-              handleSubmit={handleSubmit}
-            />
-          </div>
-        </div>
+        <Picker
+          mode={mode}
+          handleClick={handleClick}
+          handleSubmit={handleSubmit}
+          states={states}
+        />
       ) : (
         <button
           onClick={clearResults}
@@ -62,7 +57,6 @@ const ComputationPage = ({
           New Calculation
         </button>
       )}
-
       {!isEmpty(result) ? (
         <div className="flex flex-col items-center">
           <h2 className="text-gray-700 mt-5 text-xl font-bold">
@@ -77,6 +71,7 @@ const ComputationPage = ({
           <Calendars dates={result} />
         </div>
       ) : null}
+      <Footer />
     </div>
   );
 };
