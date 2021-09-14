@@ -35,7 +35,7 @@ const ComputationPage = ({
   return !mode ? (
     ""
   ) : (
-    <div className="w-full flex items-center flex-col bg-background-green">
+    <div className="w-full flex items-center flex-col bg-background-green dark:bg-gray-900 min-h-screen">
       <Header />
 
       {!result ? (
@@ -48,14 +48,14 @@ const ComputationPage = ({
       ) : (
         <button
           onClick={clearResults}
-          className="mt-5 p-5 bg-accent-green rounded-lg text-white-cream"
+          className="mt-5 p-5 bg-accent-green dark:bg-dark-selection rounded-lg text-white-cream"
         >
           New Calculation
         </button>
       )}
       {!isEmpty(result) ? (
         <div className="flex flex-col items-center">
-          <h2 className="text-gray-700 mt-5 text-xl font-bold">
+          <h2 className="text-gray-700 dark:text-gray-100 mt-5 text-xl font-bold">
             {mode.label} : {result.string}
           </h2>
         </div>

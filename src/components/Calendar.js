@@ -55,7 +55,7 @@ const Calendar = ({ blockEndDate, blockStartDate, currentMonth }) => {
   };
 
   return (
-    <div className="calendar block relative pb-4 px-4 my-4 w-full rounded-xl bg-white-cream">
+    <div className="calendar block relative pb-4 px-4 my-4 w-full rounded-xl bg-white-cream select-none">
       <CalendarHeader currentMonth={currentMonth} />
       <Days currentMonth={currentMonth} />
       {renderCells()}

@@ -1,6 +1,6 @@
 module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
@@ -9,6 +9,10 @@ module.exports = {
         "accent-green": "#379683",
         "light-green": "#8EE4AF",
         "white-cream": "#EDF5E1",
+        "dark-blue": "#150050",
+        "darker-purple": "#3F0071",
+        "dark-purple": "#610094",
+        "dark-selection": "#A12568",
       },
       width: (theme) => ({
         sevens: "calc(100% / 7)",
