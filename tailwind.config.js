@@ -28,7 +28,13 @@ module.exports = {
     },
   },
   variants: {
-    extend: { display: ["group-hover"] },
+    extend: {
+      display: ["group-hover"],
+      translate: ["active"],
+      backgroundColor: ["active"],
+      borderColor: ["active"],
+      textColor: ["active"],
+    },
   },
   plugins: [],
 };
