@@ -59,7 +59,8 @@ export const computeTrainingBlockLength = ({ startDate, raceDate }) => {
   const end = new Date(Date.parse(raceDate));
 
   const timeDifference = end.getTime() - start.getTime();
-  const weekDifference = Math.ceil(timeDifference / (1000 * 3600 * 24 * 7));
+  const weekDifference =
+    Math.round((timeDifference / (1000 * 3600 * 24 * 7)) * 10) / 10;
   return {
     string: `${weekDifference} ${weekDifference > 1 ? "weeks" : "week"}`,
     startDate: addMinutes(

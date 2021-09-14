@@ -13,10 +13,10 @@ const Picker = ({ mode, handleClick, states, handleSubmit }) => {
 
   return (
     <div>
-      <div className="flex justify-center mt-10 text-xl">
+      <div className="flex justify-center mt-10 text-xl dark:text-gray-100 select-none">
         <button
           className={`mx-2 ${
-            selected === "about" ? "bg-accent-green" : ""
+            selected === "about" ? "bg-accent-green dark:bg-dark-selection" : ""
           } p-4 rounded-3xl`}
           onClick={pickerClicked}
           id="about"
@@ -25,7 +25,7 @@ const Picker = ({ mode, handleClick, states, handleSubmit }) => {
         </button>
         <button
           className={`mx-2 ${
-            selected === "calc" ? "bg-accent-green" : ""
+            selected === "calc" ? "bg-accent-green dark:bg-dark-selection" : ""
           } p-4 rounded-3xl`}
           onClick={pickerClicked}
           id="calc"

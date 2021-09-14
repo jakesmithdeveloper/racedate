@@ -11,7 +11,7 @@ export const Cell = ({
 }) => {
   return (
     <div
-      className={` flex-grow-0 square border-r border-solid border-gray-900 overflow-hidden cursor-pointer rounded-sm ${
+      className={` flex-grow-0 square border-r border-solid border-gray-900 overflow-hidden rounded-sm ${
         !isSameMonth(day, monthStart)
           ? "pointer-events-none text-gray-400 border-gray-900"
           : compareAsc(day, blockStartDate) > 0 &&
