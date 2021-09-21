@@ -14,13 +14,18 @@ module.exports = {
         "dark-purple": "#610094",
         "dark-selection": "#A12568",
       },
+      borderRadius: {
+        calc: "50px",
+      },
       width: (theme) => ({
         sevens: "calc(100% / 7)",
+        logo: "32px",
       }),
       height: (theme) => ({
         cellHeightSM: "6em",
         cellHeightMD: "8em",
         sevens: "calc(100% / 7)",
+        logo: "32px",
       }),
       border: (theme) => ({
         calendarBorder: "0.25rem solid black",

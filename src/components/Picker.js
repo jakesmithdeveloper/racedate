@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import WebFont from "webfontloader";
 
 import CalculatorContainer from "./CalculatorContainer";
 import About from "./About";
 
 const Picker = ({ mode, handleClick, states, handleSubmit }) => {
   const [selected, setSelected] = useState("calc");
+
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ["Fredoka One"],
+      },
+    });
+  }, []);
 
   const pickerClicked = (e) => {
     e.preventDefault();
@@ -13,11 +22,14 @@ const Picker = ({ mode, handleClick, states, handleSubmit }) => {
 
   return (
     <div>
-      <div className="flex justify-center mt-10 text-xl dark:text-gray-100 select-none">
+      <div
+        style={{ fontFamily: "Fredoka One" }}
+        className="flex justify-center mt-10 text-3xl dark:text-gray-100 select-none text-gray-700"
+      >
         <button
           className={`mx-2 ${
             selected === "about" ? "bg-accent-green dark:bg-dark-selection" : ""
-          } p-4 rounded-3xl`}
+          } p-1 rounded-2xl`}
           onClick={pickerClicked}
           id="about"
         >
@@ -26,7 +38,7 @@ const Picker = ({ mode, handleClick, states, handleSubmit }) => {
         <button
           className={`mx-2 ${
             selected === "calc" ? "bg-accent-green dark:bg-dark-selection" : ""
-          } p-4 rounded-3xl`}
+          } p-1 rounded-2xl`}
           onClick={pickerClicked}
           id="calc"
         >

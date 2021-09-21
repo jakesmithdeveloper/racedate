@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import WebFont from "webfontloader";
 
 const ComputingSelector = ({ state, handleClick }) => {
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ["Work Sans"],
+      },
+    });
+  }, []);
+
   return (
-    <div className="flex items-center mb-5">
+    <div
+      className="flex items-center mb-5 px-10"
+      style={{ fontFamily: "Work Sans" }}
+    >
       <h3 className="text-white-cream">Currently Computing: </h3>
       <div className="group inline-block relative ml-2">
         <button className="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
