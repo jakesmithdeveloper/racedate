@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import WebFont from "webfontloader";
 
 import DateInput from "./DateInput";
 
@@ -8,6 +9,14 @@ const Inputs = ({ states, currentState, handleSubmit }) => {
   useEffect(() => {
     setInputValues(null);
   }, [currentState]);
+
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ["Work Sans"],
+      },
+    });
+  }, []);
 
   const handleChange = (valueObject) => {
     setInputValues({ ...inputValues, [valueObject.key]: valueObject.value });
@@ -19,9 +28,9 @@ const Inputs = ({ states, currentState, handleSubmit }) => {
         e.preventDefault();
         handleSubmit(inputValues);
       }}
-      className="flex flex-col items-center"
+      className="flex flex-col items-center w-full"
     >
-      <div className="flex flex-col items-start">
+      <div className="flex flex-col items-start w-full">
         {states.map((state) => {
           return state.label === currentState.label ? (
             ""
@@ -36,7 +45,10 @@ const Inputs = ({ states, currentState, handleSubmit }) => {
         })}
       </div>
       <div>
-        <button className="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center mt-5 mx-2">
+        <button
+          style={{ fontFamily: "Work Sans" }}
+          className="bg-gray-300 text-gray-900 font-light py-2 px-4 rounded inline-flex items-center mt-5 mx-2"
+        >
           Compute
         </button>
       </div>

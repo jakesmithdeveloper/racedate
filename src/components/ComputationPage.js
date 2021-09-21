@@ -35,39 +35,41 @@ const ComputationPage = ({
   return !mode ? (
     ""
   ) : (
-    <div className="w-full flex items-center flex-col bg-background-green dark:bg-gray-900 min-h-screen">
-      <Header />
+    <div className="w-full bg-background-green dark:bg-gray-900 min-h-screen page-container">
+      <div className="w-full content-wrap flex items-center flex-col">
+        <Header />
 
-      {!result ? (
-        <Picker
-          mode={mode}
-          handleClick={handleClick}
-          handleSubmit={handleSubmit}
-          states={states}
-        />
-      ) : (
-        <button
-          onClick={clearResults}
-          className="mt-5 p-5 bg-accent-green dark:bg-dark-selection rounded-lg text-white-cream"
-        >
-          New Calculation
-        </button>
-      )}
-      {!isEmpty(result) ? (
-        <div className="flex flex-col items-center">
-          <h2 className="text-gray-700 dark:text-gray-100 mt-5 text-xl font-bold">
-            {mode.label} : {result.string}
-          </h2>
-        </div>
-      ) : (
-        ""
-      )}
-      {!isEmpty(result) ? (
-        <div className="w-full max-w-sm md:max-w-3xl">
-          <Calendars dates={result} />
-        </div>
-      ) : null}
-      <Footer />
+        {!result ? (
+          <Picker
+            mode={mode}
+            handleClick={handleClick}
+            handleSubmit={handleSubmit}
+            states={states}
+          />
+        ) : (
+          <button
+            onClick={clearResults}
+            className="mt-5 p-5 bg-accent-green dark:bg-dark-selection rounded-lg text-white-cream"
+          >
+            New Calculation
+          </button>
+        )}
+        {!isEmpty(result) ? (
+          <div className="flex flex-col items-center">
+            <h2 className="text-gray-700 dark:text-gray-100 mt-5 text-xl font-bold">
+              {mode.label} : {result.string}
+            </h2>
+          </div>
+        ) : (
+          ""
+        )}
+        {!isEmpty(result) ? (
+          <div className="w-full max-w-sm md:max-w-3xl">
+            <Calendars dates={result} />
+          </div>
+        ) : null}
+        <Footer />
+      </div>
     </div>
   );
 };

@@ -1,36 +1,56 @@
-import React from "react";
+import React, { useEffect } from "react";
+import WebFont from "webfontloader";
 
 const About = () => {
-  return (
-    <div className="mt-10  w-full max-w-sm md:max-w-lg text-foreground-blue dark:text-gray-100">
-      <h2 className="text-4xl font-bold mb-2">About</h2>
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ["Work Sans", "Fredoka One"],
+      },
+    });
+  }, []);
 
-      <p className="text-xl">
-        RaceDate is a very simple calculator with the goal of calculating the
-        following
+  return (
+    <div className="mt-6 px-4 w-full max-w-sm md:max-w-lg text-black dark:text-gray-100">
+      <p
+        style={{ fontFamily: "Work Sans" }}
+        className="tracking-wide text-left text-2xl"
+      >
+        <span className="font-extrabold text-black text-2xl">RaceDate </span>
+        is a very simple calculator with the goal of calculating the following
       </p>
       <ul>
-        <li className="font-bold mt-5 text-xl">
+        <li
+          style={{ fontFamily: "Fredoka One" }}
+          className="font-bold mt-3 text-xl"
+        >
           Training Block Length (in weeks)
         </li>
-        <p className="text-lg">
-          Training block length is computed with your training{" "}
+        <p style={{ fontFamily: "Work Sans" }} className="text-lg text-left">
+          computed with your training{" "}
           <span className="font-semibold">start date</span> and your{" "}
           <span className="font-semibold">race date</span>
         </p>
-        <li className="font-bold mt-5 text-xl">Race Date</li>
-        <p className="text-lg">
-          Race date is computed with your{" "}
+        <li
+          style={{ fontFamily: "Fredoka One" }}
+          className="font-bold mt-3 text-xl"
+        >
+          Race Date
+        </li>
+        <p style={{ fontFamily: "Work Sans" }} className="text-lg">
+          computed with your{" "}
           <span className="font-semibold">training start date</span> and{" "}
-          <span className="font-semibold">
-            training block length (in weeks)
-          </span>
-        </p>
-        <li className="font-bold mt-5 text-xl">Training Start Date</li>
-        <p>
-          Training start date is computed with your{" "}
-          <span className="font-semibold">race date</span> and{" "}
           <span className="font-semibold">training block length</span>
+        </p>
+        <li
+          style={{ fontFamily: "Fredoka One" }}
+          className="font-bold mt-3 text-xl"
+        >
+          Training Start Date
+        </li>
+        <p style={{ fontFamily: "Work Sans" }} className="text-lg">
+          computed with your <span className="font-semibold">race date</span>{" "}
+          and <span className="font-semibold">training block length</span>
         </p>
       </ul>
     </div>

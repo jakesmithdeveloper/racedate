@@ -1,16 +1,28 @@
 import React, { useState, useEffect } from "react";
+import WebFont from "webfontloader";
 
 const DateInput = ({ inputConfig, handleChange, currentState }) => {
   const [value, setValue] = useState("");
 
   useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ["Work Sans"],
+      },
+    });
+  }, []);
+
+  useEffect(() => {
     setValue("");
   }, [currentState]);
 
-  const width = inputConfig.type === "text" ? "w-10" : "";
+  const width = inputConfig.type === "text" ? "w-10" : "w-40";
 
   return (
-    <div>
+    <div
+      style={{ fontFamily: "Work Sans" }}
+      className="font-thin w-full flex justify-between items-center px-10"
+    >
       <label
         className="text-gray-200"
         htmlFor=""

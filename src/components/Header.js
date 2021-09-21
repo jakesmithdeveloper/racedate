@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { setDarkMode } from "../actions";
+import WebFont from "webfontloader";
 
 const Header = ({ darkMode, setDarkMode }) => {
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ["Bangers"],
+      },
+    });
+  });
+
   const switchDarkMode = (e) => {
     setDarkMode(!darkMode);
   };
 
   return (
-    <div className="flex justify-evenly place-items-center bg-foreground-blue dark:bg-darker-purple max-w-sm md:max-w-lg w-full rounded-full text-white-cream dark:text-gray-100  p-10 mt-10 select-none">
-      <h1 className="text-6xl font-bold">Race Date</h1>
+    <div className="flex justify-evenly place-items-center bg-foreground-blue dark:bg-darker-purple text-white-cream select-none w-80 h-40 rounded-full mt-8">
+      <h1 style={{ fontFamily: "Bangers" }} className="tracking-wider text-5xl">
+        Race Date
+      </h1>
       <div>
         <label for="toogleA" class="flex items-center cursor-pointer">
           <div class="relative">
