@@ -27,7 +27,7 @@ module.exports = {
         sevens: "calc(100% / 7)",
         logo: "32px",
         "logo-large": "64px",
-        "container-large": "650px",
+        "container-large": "600px",
         "header-large": "475px",
       }),
       height: (theme) => ({
@@ -36,7 +36,7 @@ module.exports = {
         sevens: "calc(100% / 7)",
         logo: "32px",
         "logo-large": "64px",
-        "container-large": "650px",
+        "container-large": "600px",
       }),
       border: (theme) => ({
         calendarBorder: "0.25rem solid black",

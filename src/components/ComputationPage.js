@@ -39,6 +39,7 @@ const ComputationPage = ({
   const handleSubmit = (values) => {
     const toCompute = parseInput(values);
     setResult(parseResult(toCompute, values));
+    window.scrollTo(0, 0);
   };
 
   return !mode ? (

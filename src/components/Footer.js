@@ -5,7 +5,7 @@ import GitHubLogo from "../resources/githubLogo.png";
 
 const Footer = () => {
   return (
-    <div className="flex footer items-center justify-center my-5">
+    <div className="flex footer items-center justify-center mt-10">
       <a
         className="text-2xl md:text-3xl mx-2 text-gray-700 dark:text-white-cream"
         href="https://www.jakesmith.info"
