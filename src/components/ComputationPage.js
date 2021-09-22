@@ -28,7 +28,7 @@ const ComputationPage = ({
   const states = [
     { label: "Start Date", type: "date", key: "startDate" },
     { label: "Race Date", type: "date", key: "raceDate" },
-    { label: "Training Block Length", type: "text", key: "block" },
+    { label: "Training Block Length", type: "number", key: "block" },
   ];
 
   const handleClick = (e) => {
