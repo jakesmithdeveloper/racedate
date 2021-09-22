@@ -15,7 +15,7 @@ const Inputs = ({ states, currentState, onSubmit }) => {
 
   return (
     <Form onSubmit={onSubmit}>
-      {({ handleSubmit }) => (
+      {({ handleSubmit, form }) => (
         <form
           onSubmit={handleSubmit}
           className="flex flex-col items-center w-full"
@@ -29,6 +29,7 @@ const Inputs = ({ states, currentState, onSubmit }) => {
                   key={state.label}
                   inputConfig={state}
                   currentState={currentState}
+                  form={form}
                 />
               );
             })}
