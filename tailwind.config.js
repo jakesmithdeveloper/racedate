@@ -3,6 +3,9 @@ module.exports = {
   darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {
+      animation: {
+        wiggle: "wiggle 1s ease-in-out infinite",
+      },
       colors: {
         "foreground-blue": "#05386B",
         "background-green": "#5CDB95",
@@ -14,18 +17,26 @@ module.exports = {
         "dark-purple": "#610094",
         "dark-selection": "#A12568",
       },
+      marginBottome: {
+        square: "100%",
+      },
       borderRadius: {
         calc: "50px",
       },
       width: (theme) => ({
         sevens: "calc(100% / 7)",
         logo: "32px",
+        "logo-large": "64px",
+        "container-large": "650px",
+        "header-large": "475px",
       }),
       height: (theme) => ({
         cellHeightSM: "6em",
         cellHeightMD: "8em",
         sevens: "calc(100% / 7)",
         logo: "32px",
+        "logo-large": "64px",
+        "container-large": "650px",
       }),
       border: (theme) => ({
         calendarBorder: "0.25rem solid black",
@@ -36,6 +47,7 @@ module.exports = {
     extend: {
       display: ["group-hover"],
       translate: ["active"],
+      animation: ["hover"],
       backgroundColor: ["active"],
       borderColor: ["active"],
       textColor: ["active"],

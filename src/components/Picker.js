@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import WebFont from "webfontloader";
 
-import CalculatorContainer from "./CalculatorContainer";
 import About from "./About";
+import CalculatorContainer from "./CalculatorContainer";
+import DarkModeToggle from "./DarkModeToggle";
 
 const Picker = ({ mode, handleClick, states, handleSubmit }) => {
   const [selected, setSelected] = useState("calc");
@@ -26,6 +27,7 @@ const Picker = ({ mode, handleClick, states, handleSubmit }) => {
         style={{ fontFamily: "Fredoka One" }}
         className="flex justify-center mt-10 text-3xl dark:text-gray-100 select-none text-gray-700"
       >
+        <DarkModeToggle />
         <button
           className={`mx-2 ${
             selected === "about" ? "bg-accent-green dark:bg-dark-selection" : ""

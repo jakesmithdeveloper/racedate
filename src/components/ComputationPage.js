@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Calendars from "./Calendars";
 import Footer from "./Footer";
 import Header from "./Header";
 import Picker from "./Picker";
+import WebFont from "webfontloader";
 
 import { parseResult, parseInput } from "../helper/computations";
 import { setMode, setResult, clearResults } from "../actions";
@@ -16,6 +17,14 @@ const ComputationPage = ({
   result,
   clearResults,
 }) => {
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ["Work Sans", "Fredoka One"],
+      },
+    });
+  }, []);
+
   const states = [
     { label: "Start Date", type: "date", key: "startDate" },
     { label: "Race Date", type: "date", key: "raceDate" },
@@ -49,14 +58,15 @@ const ComputationPage = ({
         ) : (
           <button
             onClick={clearResults}
-            className="mt-5 p-5 bg-accent-green dark:bg-dark-selection rounded-lg text-white-cream"
+            className="mt-5 p-5 bg-accent-green dark:bg-dark-selection rounded-lg text-white-cream tracking-widest"
+            style={{ fontFamily: "Work Sans" }}
           >
             New Calculation
           </button>
         )}
         {!isEmpty(result) ? (
           <div className="flex flex-col items-center">
-            <h2 className="text-gray-700 dark:text-gray-100 mt-5 text-xl font-bold">
+            <h2 className="text-gray-700 dark:text-gray-100 mt-5 text-2xl md:text-3xl font-bold">
               {mode.label} : {result.string}
             </h2>
           </div>
@@ -68,6 +78,7 @@ const ComputationPage = ({
             <Calendars dates={result} />
           </div>
         ) : null}
+
         <Footer />
       </div>
     </div>

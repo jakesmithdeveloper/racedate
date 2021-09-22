@@ -15,9 +15,9 @@ const ComputingSelector = ({ state, handleClick }) => {
       className="flex items-center mb-5 px-10"
       style={{ fontFamily: "Work Sans" }}
     >
-      <h3 className="text-white-cream">Currently Computing: </h3>
+      <h3 className="text-white-cream md:text-3xl">Currently Computing: </h3>
       <div className="group inline-block relative ml-2">
-        <button className="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
+        <button className="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center md:text-2xl">
           <span className="mr-1">{state.label}</span>
         </button>
         <ul className="absolute hidden text-gray-700 pt-1 group-hover:block">

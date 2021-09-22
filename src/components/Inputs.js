@@ -47,7 +47,7 @@ const Inputs = ({ states, currentState, handleSubmit }) => {
       <div>
         <button
           style={{ fontFamily: "Work Sans" }}
-          className="bg-gray-300 text-gray-900 font-light py-2 px-4 rounded inline-flex items-center mt-5 mx-2"
+          className="bg-gray-300 text-gray-900 font-light py-2 px-4 rounded inline-flex items-center mt-5 md:mt-16 mx-2 md:text-3xl"
         >
           Compute
         </button>

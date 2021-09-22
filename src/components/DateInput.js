@@ -16,19 +16,21 @@ const DateInput = ({ inputConfig, handleChange, currentState }) => {
     setValue("");
   }, [currentState]);
 
-  const width = inputConfig.type === "text" ? "w-10" : "w-40";
+  const width = inputConfig.type === "text" ? "w-10 ml-5" : "w-40 md:w-72";
 
   return (
     <div
       style={{ fontFamily: "Work Sans" }}
-      className="font-thin w-full flex justify-between items-center px-10"
+      className={`font-thin w-full flex ${
+        inputConfig.type === "text" ? "" : "justify-between"
+      } items-center px-10 md:text-2xl`}
     >
       <label
         className="text-gray-200"
         htmlFor=""
       >{`${inputConfig.label} : `}</label>
       <input
-        className={`my-4 ${width}`}
+        className={`my-4 text-center ${width}`}
         type={inputConfig.type}
         value={value}
         onChange={(e) => {
