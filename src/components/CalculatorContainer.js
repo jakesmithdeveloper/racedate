@@ -10,11 +10,7 @@ const CalculatorContainer = ({ mode, handleClick, states, handleSubmit }) => {
       <CalculatorTitle title={mode.label} />
       <div>
         <ComputingSelector state={mode} handleClick={handleClick} />
-        <Inputs
-          states={states}
-          currentState={mode}
-          handleSubmit={handleSubmit}
-        />
+        <Inputs states={states} currentState={mode} onSubmit={handleSubmit} />
       </div>
     </div>
   );

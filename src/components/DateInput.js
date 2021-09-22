@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { Field } from "react-final-form";
 import WebFont from "webfontloader";
 
-const DateInput = ({ inputConfig, handleChange, currentState }) => {
-  const [value, setValue] = useState("");
-
+const DateInput = ({ inputConfig, currentState }) => {
   useEffect(() => {
     WebFont.load({
       google: {
@@ -12,33 +11,29 @@ const DateInput = ({ inputConfig, handleChange, currentState }) => {
     });
   }, []);
 
-  useEffect(() => {
-    setValue("");
-  }, [currentState]);
-
   const width = inputConfig.type === "text" ? "w-10 ml-5" : "w-40 md:w-72";
 
   return (
-    <div
-      style={{ fontFamily: "Work Sans" }}
-      className={`font-thin w-full flex ${
-        inputConfig.type === "text" ? "" : "justify-between"
-      } items-center px-10 md:text-2xl`}
+    <Field
+      name={inputConfig.key}
+      type={inputConfig.type}
+      inputConfig={inputConfig}
     >
-      <label
-        className="text-gray-200"
-        htmlFor=""
-      >{`${inputConfig.label} : `}</label>
-      <input
-        className={`my-4 text-center ${width}`}
-        type={inputConfig.type}
-        value={value}
-        onChange={(e) => {
-          setValue(e.target.value);
-          handleChange({ key: inputConfig.key, value: e.target.value });
-        }}
-      />
-    </div>
+      {({ input, inputConfig }) => (
+        <div
+          style={{ fontFamily: "Work Sans" }}
+          className={`font-thin w-full flex ${
+            inputConfig.type === "text" ? "" : "justify-between"
+          } items-center px-10 md:text-2xl`}
+        >
+          <label
+            className="text-gray-200"
+            htmlFor=""
+          >{`${inputConfig.label} : `}</label>
+          <input {...input} className={`my-4 text-center ${width}`} />
+        </div>
+      )}
+    </Field>
   );
 };
 

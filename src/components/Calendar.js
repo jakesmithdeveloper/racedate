@@ -36,6 +36,7 @@ const Calendar = ({ blockEndDate, blockStartDate, currentMonth }) => {
             blockStartDate={blockStartDate}
             blockEndDate={blockEndDate}
             formattedDate={formattedDate}
+            key={day}
           />
         );
         day = addDays(day, 1);
